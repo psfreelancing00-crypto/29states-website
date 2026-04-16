@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>29 States – Indian Restaurant & Catering, York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:#8B6D2F;--gold-pale:rgba(201,168,76,.1);
+  --deep:#0D0A06;--rich:#1A1208;--dark2:#120D05;--dark3:#0A0704;
+  --cream:#F5EDD8;--cream-dim:#D4C4A0;--spice:#8B2C1A;--text:#EDE5D0;
+  --trans:all 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--deep);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:var(--gold-dim)}
+
+/* ══════════════════════════════
+   CURSOR
+══════════════════════════════ */
+.cursor{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .2s;mix-blend-mode:difference}
+.cursor-ring{width:32px;height:32px;border:1px solid rgba(201,168,76,.6);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+.cursor.grow{width:20px;height:20px}
+.cursor-ring.grow{width:55px;height:55px;border-color:rgba(201,168,76,.9)}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav{position:fixed;top:0;width:100%;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.8rem 3rem;background:transparent;transition:var(--trans)}
+nav.scrolled{background:rgba(10,7,4,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.1);padding:.6rem 3rem}
+.nav-logo img{height:54px;transition:var(--trans);filter:drop-shadow(0 0 12px rgba(201,168,76,.25))}
+.nav-logo img:hover{transform:scale(1.06);filter:drop-shadow(0 0 22px rgba(201,168,76,.55))}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{font-size:.66rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,237,216,.7);text-decoration:none;transition:var(--trans);position:relative;padding:.25rem 0}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:50%;width:0;height:1px;background:var(--gold);transition:all .35s;transform:translateX(-50%)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-book{background:var(--gold)!important;color:var(--deep)!important;padding:.5rem 1.4rem!important;letter-spacing:.14em!important;font-weight:600!important}
+.nav-book::after{display:none!important}
+.nav-book:hover{background:transparent!important;color:var(--gold)!important;box-shadow:inset 0 0 0 1px var(--gold)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:600;padding:4px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--gold);transition:var(--trans)}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(10,7,4,.99);z-index:400;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Cinzel',serif;font-size:1.3rem;letter-spacing:.15em;color:var(--cream);text-decoration:none;transition:color .3s;position:relative}
+.mob-menu a:hover{color:var(--gold)}
+.mob-menu .mb-cta{background:var(--gold);color:var(--deep)!important;padding:.8rem 2.5rem;margin-top:.8rem}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+#hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-img-fallback{display:none}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,7,4,.55) 0%,rgba(10,7,4,.3) 45%,rgba(10,7,4,.88) 100%)}
+/* Mandala rings */
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,.1);animation:spinRing linear infinite;z-index:2;pointer-events:none}
+.r1{width:640px;height:640px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:90s}
+.r2{width:460px;height:460px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:60s;animation-direction:reverse;border-color:rgba(201,168,76,.07)}
+.r3{width:280px;height:280px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:35s;border-color:rgba(201,168,76,.05)}
+@keyframes spinRing{to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* Corner brackets */
+.cbr{position:absolute;width:70px;height:70px;border-color:rgba(201,168,76,.35);border-style:solid;z-index:3;transition:all .6s}
+.cbr-tl{top:85px;left:36px;border-width:1px 0 0 1px}
+.cbr-tr{top:85px;right:36px;border-width:1px 1px 0 0}
+.cbr-bl{bottom:36px;left:36px;border-width:0 0 1px 1px}
+.cbr-br{bottom:36px;right:36px;border-width:0 1px 1px 0}
+/* Particles */
+.ptcl{position:absolute;border-radius:50%;background:var(--gold);opacity:0;animation:ptclFloat linear infinite;pointer-events:none;z-index:2}
+@keyframes ptclFloat{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:.5}90%{opacity:.2}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+/* Hero content */
+.hero-content{position:relative;z-index:4}
+.hero-logo{width:190px;margin-bottom:1.4rem;animation:fadeUp 1.2s .2s both;filter:drop-shadow(0 0 35px rgba(201,168,76,.4))}
+.hero-eyebrow{font-size:.62rem;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;animation:fadeUp 1s .5s both}
+.hero-line{display:flex;align-items:center;gap:1rem;justify-content:center;margin:.8rem 0;animation:fadeUp 1s .6s both}
+.hero-line::before,.hero-line::after{content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim))}
+.hero-line::after{background:linear-gradient(to left,transparent,var(--gold-dim))}
+.hero-line span{color:var(--gold);font-size:.9rem}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3.2vw,2.1rem);font-style:italic;color:var(--cream);letter-spacing:.04em;margin-bottom:.5rem;text-shadow:0 2px 25px rgba(0,0,0,.6);animation:fadeUp 1s .7s both}
+.hero-sub{font-size:.68rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:2.8rem;animation:fadeUp 1s .85s both}
+.hero-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 1s both}
+/* Buttons */
+.btn-g{font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.6rem;background:var(--gold);color:var(--deep);text-decoration:none;border:1px solid var(--gold);display:inline-block;position:relative;overflow:hidden;transition:var(--trans)}
+.btn-g::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%) skewX(-15deg);transition:transform .45s}
+.btn-g:hover::before{transform:translateX(110%) skewX(-15deg)}
+.btn-g:hover{box-shadow:0 8px 28px rgba(201,168,76,.3);transform:translateY(-2px)}
+.btn-o{font-size:.7rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;padding:1rem 2.6rem;background:transparent;color:var(--cream);text-decoration:none;border:1px solid rgba(245,237,216,.4);display:inline-block;transition:var(--trans)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.12)}
+/* Scroll indicator */
+.scroll-ind{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:4;animation:fadeIn 2s 1.4s both;opacity:0}
+.scroll-ind-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollAnim 2s infinite}
+.scroll-ind-txt{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-dim)}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ══════════════════════════════
+   MARQUEE
+══════════════════════════════ */
+.mq-bar{background:linear-gradient(90deg,var(--spice),#6B2010,var(--spice));padding:.75rem 0;overflow:hidden;white-space:nowrap}
+.mq-track{display:inline-flex;animation:mqScroll 32s linear infinite}
+.mq-item{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.38em;text-transform:uppercase;color:var(--cream-dim);padding:0 3rem;opacity:.9}
+.mq-item span{color:var(--gold);margin:0 .2rem}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════════════════════════
+   LAYOUT HELPERS
+══════════════════════════════ */
+.sw{max-width:1320px;margin:0 auto;padding:7.5rem 3rem}
+.eyebrow{font-size:.62rem;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;color:var(--cream);line-height:1.06;margin-bottom:1.4rem;letter-spacing:.02em}
+.sec-title em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-weight:400;font-size:1.12em}
+.sec-body{font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.9;color:var(--cream-dim)}
+/* Reveal animations - start hidden, animate in when visible */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.rv-l.on{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.rv-r.on{opacity:1;transform:translateX(0)}
+/* Fallback — if JS fails, show everything */
+.no-js .rv,.no-js .rv-l,.no-js .rv-r{opacity:1;transform:none}
+
+/* ══════════════════════════════
+   ABOUT
+══════════════════════════════ */
+#about{background:var(--rich);overflow:hidden;position:relative}
+#about::after{content:'';position:absolute;right:-150px;top:-150px;width:500px;height:500px;border:1px solid rgba(201,168,76,.04);border-radius:50%;pointer-events:none}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-p{font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.95;color:var(--cream-dim);margin-bottom:1.2rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.5rem}
+.astat{padding:1.4rem;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.1);transition:var(--trans);position:relative;overflow:hidden}
+.astat::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .5s}
+.astat:hover{background:rgba(201,168,76,.09);border-color:rgba(201,168,76,.32);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.astat:hover::after{width:100%}
+.astat-n{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.astat-l{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim)}
+/* 2×2 photo mosaic */
+.about-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:260px 260px;gap:6px}
+.am-item{overflow:hidden;position:relative}
+.am-item img{width:100%;height:100%;object-fit:cover;transition:transform .75s cubic-bezier(.25,.46,.45,.94),filter .5s;filter:brightness(.8) saturate(1.1)}
+.am-item:hover img{transform:scale(1.09);filter:brightness(1) saturate(1.3)}
+.am-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,4,.75) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.2rem}
+.am-item:hover .am-overlay{opacity:1}
+.am-lbl{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);transform:translateY(8px);transition:transform .35s .05s}
+.am-item:hover .am-lbl{transform:none}
+
+/* ══════════════════════════════
+   HISTORY / STORY
+══════════════════════════════ */
+#history{background:var(--deep);position:relative;overflow:hidden}
+.hist-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(201,168,76,.05) 0%,transparent 72%)}
+.hist-inner{max-width:860px;margin:0 auto;text-align:center;position:relative}
+.hist-ornament{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:2rem auto}
+.hist-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.12rem,2vw,1.4rem);line-height:2;color:var(--cream-dim);font-style:italic}
+.hist-quote strong{color:var(--gold);font-style:normal;font-weight:600}
+/* 3-col feature cards - no images */
+.hist-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:4rem;background:rgba(201,168,76,.08)}
+.hcard{background:var(--dark2);padding:3rem 2rem;text-align:center;transition:var(--trans);position:relative;overflow:hidden;border-bottom:2px solid transparent}
+.hcard:hover{background:rgba(201,168,76,.06);border-bottom-color:var(--gold)}
+.hcard-icon{font-size:2.2rem;margin-bottom:1.2rem;display:block;transition:transform .4s}
+.hcard:hover .hcard-icon{transform:scale(1.15) rotate(-5deg)}
+.hcard-title{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.hcard-text{font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.75;color:var(--cream-dim)}
+
+/* ══════════════════════════════
+   SIGNATURE DISHES SHOWCASE
+══════════════════════════════ */
+#showcase{background:var(--rich);overflow:hidden}
+.showcase-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.dishes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.dish-card{background:var(--dark2);border:1px solid rgba(201,168,76,.08);overflow:hidden;transition:var(--trans);position:relative;cursor:default}
+.dish-card:hover{border-color:rgba(201,168,76,.38);transform:translateY(-9px);box-shadow:0 22px 55px rgba(0,0,0,.55)}
+.dish-img{height:230px;overflow:hidden;position:relative}
+.dish-img img{width:100%;height:100%;object-fit:cover;transition:transform .75s cubic-bezier(.25,.46,.45,.94),filter .5s;filter:brightness(.78) saturate(1.1)}
+.dish-card:hover .dish-img img{transform:scale(1.11);filter:brightness(.95) saturate(1.35)}
+.dish-img-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,4,.85) 0%,transparent 55%)}
+.dish-badge{position:absolute;top:.8rem;right:.8rem;background:var(--spice);font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);padding:.28rem .65rem;z-index:2}
+.dish-body{padding:1.4rem 1.5rem 1.6rem}
+.dish-name{font-family:'Cinzel',serif;font-size:.88rem;letter-spacing:.1em;color:var(--cream);margin-bottom:.35rem;transition:color .3s}
+.dish-card:hover .dish-name{color:var(--gold)}
+.dish-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--cream-dim);line-height:1.5;margin-bottom:.9rem}
+.dish-foot{display:flex;justify-content:space-between;align-items:center}
+.dish-price{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold)}
+.dish-tag{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);border:1px solid rgba(201,168,76,.2);padding:.2rem .55rem}
+
+/* ══════════════════════════════
+   MENU SECTION — NO IMAGES IN TABS
+══════════════════════════════ */
+#menu{background:var(--deep)}
+.menu-tabs{display:flex;justify-content:center;flex-wrap:wrap;max-width:720px;margin:0 auto 3.5rem;border:1px solid rgba(201,168,76,.15);overflow:hidden}
+.tab-btn{flex:1;min-width:130px;padding:.95rem .5rem;background:transparent;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);transition:var(--trans);border-right:1px solid rgba(201,168,76,.12);position:relative;overflow:hidden}
+.tab-btn:last-child{border-right:none}
+.tab-btn.active{background:var(--gold);color:var(--deep);font-weight:600}
+.tab-btn:not(.active):hover{color:var(--gold);background:rgba(201,168,76,.07)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+/* Menu category cards — clean, no images */
+.menu-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem}
+.mcat{background:var(--rich);border:1px solid rgba(201,168,76,.08);transition:var(--trans);overflow:hidden}
+.mcat:hover{border-color:rgba(201,168,76,.28);box-shadow:0 10px 35px rgba(0,0,0,.4)}
+.mcat-hdr{display:flex;align-items:center;gap:.8rem;padding:1.5rem 1.8rem 0}
+.mcat-icon{font-size:1.5rem}
+.mcat-title{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.mcat-body{padding:.8rem 1.8rem 1.6rem}
+.sub-h{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.22em;color:var(--gold-dim);text-transform:uppercase;margin:1.2rem 0 .5rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.08)}
+.mi{display:flex;justify-content:space-between;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid rgba(201,168,76,.05);gap:1rem;transition:all .25s;cursor:default}
+.mi:last-child{border-bottom:none}
+.mi:hover{padding-left:.5rem}
+.mi:hover .mi-n{color:var(--gold)}
+.mi-l{flex:1}
+.mi-n{font-size:.85rem;color:var(--cream);transition:color .25s}
+.mi-d{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:var(--cream-dim);line-height:1.4;margin-top:.1rem}
+.mi-p{font-family:'Cinzel',serif;font-size:.83rem;color:var(--gold);white-space:nowrap;font-weight:600}
+/* Special menu boxes — no images */
+.sp-wrap{max-width:680px;margin:0 auto}
+.sp-box{background:var(--rich);border:1px solid rgba(201,168,76,.15);padding:3.5rem}
+.sp-title{font-family:'Cinzel',serif;font-size:1.5rem;letter-spacing:.2em;color:var(--gold);text-align:center;margin-bottom:.5rem}
+.sp-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--cream-dim);text-align:center;margin-bottom:2.5rem}
+.sdiv{display:flex;align-items:center;gap:1rem;margin:1.8rem 0 1rem;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.2)}
+.si{padding:.55rem 0;border-bottom:1px solid rgba(201,168,76,.07);transition:all .25s;cursor:default}
+.si:last-child{border-bottom:none}
+.si:hover{padding-left:.5rem}
+.si-n{font-size:.88rem;color:var(--cream);transition:color .25s}
+.si:hover .si-n{color:var(--gold)}
+.si-d{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:var(--cream-dim)}
+.sp-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--cream-dim);text-align:center;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(201,168,76,.1);line-height:1.7}
+.al-note{font-size:.68rem;color:var(--gold-dim);text-align:center;margin-top:.8rem}
+/* Drinks — no images */
+.drinks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:2rem}
+.dcat{background:var(--rich);border:1px solid rgba(201,168,76,.08);padding:2rem;transition:var(--trans)}
+.dcat:hover{border-color:rgba(201,168,76,.26);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.dcat-title{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;padding-bottom:.7rem;border-bottom:1px solid rgba(201,168,76,.12)}
+.di{display:flex;justify-content:space-between;padding:.48rem 0;border-bottom:1px solid rgba(201,168,76,.05);font-size:.82rem;gap:.8rem;transition:all .22s;cursor:default}
+.di:last-child{border-bottom:none}
+.di:hover{padding-left:.4rem}
+.di:hover .di-n{color:var(--gold)}
+.di-n{color:var(--cream);transition:color .25s}
+.di-d{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.78rem;color:var(--cream-dim)}
+.di-p{color:var(--gold);white-space:nowrap;flex-shrink:0;font-family:'Cinzel',serif;font-size:.78rem}
+
+/* ══════════════════════════════
+   GALLERY — ALL REAL IMAGES
+══════════════════════════════ */
+#gallery{background:var(--rich)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:240px 240px 240px;gap:4px;margin-top:3rem}
+/* Layout positions */
+.gi{overflow:hidden;position:relative;cursor:zoom-in}
+.gi:nth-child(1){grid-column:1;grid-row:1/3}
+.gi:nth-child(2){grid-column:2;grid-row:1}
+.gi:nth-child(3){grid-column:3;grid-row:1}
+.gi:nth-child(4){grid-column:4;grid-row:1/3}
+.gi:nth-child(5){grid-column:2/4;grid-row:2}
+.gi:nth-child(6){grid-column:1;grid-row:3}
+.gi:nth-child(7){grid-column:2;grid-row:3}
+.gi:nth-child(8){grid-column:3;grid-row:3}
+.gi:nth-child(9){grid-column:4;grid-row:3}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .5s;filter:brightness(.75) saturate(1.05)}
+.gi:hover img{transform:scale(1.09);filter:brightness(.98) saturate(1.3)}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,4,.9) 0%,rgba(10,7,4,.1) 55%,transparent 100%);opacity:0;transition:opacity .45s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem 1.6rem}
+.gi:hover .gi-ov{opacity:1}
+.gi-title{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;transform:translateY(10px);transition:transform .38s .04s}
+.gi-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--cream-dim);transform:translateY(10px);transition:transform .38s .09s}
+.gi:hover .gi-title,.gi:hover .gi-sub{transform:none}
+
+/* ══════════════════════════════
+   INFLUENCERS — INSTAGRAM REELS
+══════════════════════════════ */
+#influencers{background:var(--deep)}
+.infl-intro{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.85;color:var(--cream-dim);max-width:580px;margin:0 auto 3rem;text-align:center;font-style:italic}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto}
+.reel-card{background:var(--rich);border:1px solid rgba(201,168,76,.12);overflow:hidden;transition:var(--trans);position:relative}
+.reel-card:hover{border-color:rgba(201,168,76,.42);transform:translateY(-7px);box-shadow:0 22px 55px rgba(0,0,0,.55)}
+/* Instagram embed container */
+.reel-embed{width:100%;background:#000;position:relative;overflow:hidden;min-height:480px}
+.reel-embed iframe{width:100%;min-height:480px;border:none;display:block}
+.reel-info{padding:1.4rem 1.6rem 1.8rem}
+.reel-handle{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.reel-handle::before{content:'';width:18px;height:1px;background:var(--gold)}
+.reel-caption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.96rem;color:var(--cream-dim);line-height:1.65;margin-bottom:1rem}
+.reel-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);text-decoration:none;transition:color .3s}
+.reel-link::after{content:'↗';transition:transform .3s}
+.reel-card:hover .reel-link{color:var(--gold)}
+.reel-card:hover .reel-link::after{transform:translate(2px,-2px)}
+/* Instagram badge */
+.ig-badge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-radius:6px;padding:.3rem .7rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#fff;z-index:10;font-weight:600}
+
+/* ══════════════════════════════
+   EXPERIENCE / SERVICES
+══════════════════════════════ */
+#experience{background:var(--rich)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem;background:rgba(201,168,76,.06)}
+.exp-card{background:var(--dark2);overflow:hidden;transition:var(--trans);position:relative}
+/* Image on top */
+.exp-img{height:200px;overflow:hidden;position:relative}
+.exp-img img{width:100%;height:100%;object-fit:cover;transition:transform .75s,filter .5s;filter:brightness(.6) saturate(1.05)}
+.exp-card:hover .exp-img img{transform:scale(1.08);filter:brightness(.82) saturate(1.25)}
+.exp-img-grad{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--dark2) 100%)}
+.exp-body{padding:2rem 2.5rem 2.8rem}
+.exp-num{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.42em;color:var(--gold-dim);margin-bottom:.4rem}
+.exp-title{font-family:'Cinzel',serif;font-size:1.1rem;letter-spacing:.12em;color:var(--gold);margin-bottom:.7rem;transition:color .3s}
+.exp-card:hover .exp-title{color:var(--gold-light)}
+.exp-text{font-family:'Cormorant Garamond',serif;font-size:1.04rem;line-height:1.75;color:var(--cream-dim)}
+.exp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),var(--spice));transform:scaleX(0);transform-origin:left;transition:transform .45s}
+.exp-card:hover::after{transform:scaleX(1)}
+
+/* ══════════════════════════════
+   TESTIMONIALS
+══════════════════════════════ */
+#testimonials{background:var(--deep)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.t-card{background:var(--rich);padding:2.5rem;border:1px solid rgba(201,168,76,.08);transition:var(--trans);position:relative;overflow:hidden;cursor:default}
+.t-card::before{content:'"';position:absolute;top:-1.2rem;left:.8rem;font-family:'Cormorant Garamond',serif;font-size:9rem;color:rgba(201,168,76,.05);line-height:1;pointer-events:none}
+.t-card:hover{border-color:rgba(201,168,76,.32);transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.45)}
+.t-stars{color:var(--gold);font-size:.8rem;letter-spacing:.28em;margin-bottom:1.2rem}
+.t-text{font-family:'Cormorant Garamond',serif;font-size:1.04rem;font-style:italic;line-height:1.88;color:var(--cream-dim);margin-bottom:1.4rem;position:relative;z-index:1}
+.t-bar{width:28px;height:1px;background:var(--gold-dim);margin-bottom:.9rem}
+.t-author{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim)}
+
+/* ══════════════════════════════
+   GOOGLE REVIEW CTA
+══════════════════════════════ */
+#review-cta{position:relative;overflow:hidden;padding:8rem 3rem;text-align:center}
+.review-bg-img{position:absolute;inset:0;z-index:0}
+.review-bg-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.22) saturate(1.1)}
+.review-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(10,7,4,.85),rgba(26,18,8,.9))}
+.review-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
+.review-stars{font-size:1.9rem;letter-spacing:.4em;color:var(--gold);margin-bottom:1.5rem}
+.review-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--cream-dim);line-height:1.9;margin-bottom:2.5rem}
+.btn-review{font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;padding:1.1rem 3rem;background:transparent;color:var(--gold);text-decoration:none;border:1px solid var(--gold);display:inline-block;position:relative;overflow:hidden;transition:var(--trans)}
+.btn-review::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform .42s}
+.btn-review:hover::before{transform:none}
+.btn-review span{position:relative;z-index:1;transition:color .42s}
+.btn-review:hover span{color:var(--deep)}
+.btn-review:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,.3)}
+
+/* ══════════════════════════════
+   BOOK A TABLE
+══════════════════════════════ */
+#book{background:var(--rich)}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid rgba(201,168,76,.1)}
+.book-img-side{position:relative;overflow:hidden;min-height:520px}
+.book-img-side img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(1.15);transition:filter .5s}
+.book-img-side:hover img{filter:brightness(.65) saturate(1.3)}
+.book-img-grad{position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,rgba(26,18,8,.6))}
+.book-img-txt{position:absolute;bottom:3rem;left:3rem;right:2rem}
+.book-img-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-style:italic;color:var(--cream);line-height:1.2;margin-bottom:.8rem;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.book-img-sub{font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
+.book-form-side{padding:4rem 3.5rem;background:var(--dark2);display:flex;flex-direction:column;justify-content:center}
+.book-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0 1.5rem}
+.book-form input,.book-form select,.book-form textarea{background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.15);color:var(--cream);padding:.9rem 1.1rem;font-family:'Jost',sans-serif;font-size:.82rem;letter-spacing:.05em;outline:none;width:100%;transition:var(--trans)}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--gold);background:rgba(201,168,76,.04);box-shadow:0 0 0 3px rgba(201,168,76,.07)}
+.book-form select option{background:var(--deep)}
+.book-form .full{grid-column:1/-1}
+.book-form textarea{resize:none;height:88px}
+::placeholder{color:rgba(213,196,160,.35)}
+.or-sep{display:flex;align-items:center;gap:1rem;color:var(--gold-dim);font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;margin:1.4rem 0}
+.or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.12)}
+.call-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.call-btn-link{font-size:.7rem;color:var(--cream-dim);text-decoration:none;border:1px solid rgba(201,168,76,.15);padding:.6rem 1.2rem;transition:var(--trans);display:flex;align-items:center;gap:.5rem}
+.call-btn-link:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.05);transform:translateY(-2px)}
+
+/* ══════════════════════════════
+   CONTACT — NO IMAGES
+══════════════════════════════ */
+#contact{background:var(--deep)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.ccard{background:var(--rich);border:1px solid rgba(201,168,76,.08);padding:2.5rem;transition:var(--trans);position:relative;overflow:hidden}
+.ccard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .5s}
+.ccard:hover{border-color:rgba(201,168,76,.28);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.ccard:hover::after{transform:scaleX(1)}
+.ccard-icon{font-size:2rem;margin-bottom:1.1rem;display:block;transition:transform .4s}
+.ccard:hover .ccard-icon{transform:scale(1.12)}
+.ccard-title{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.ccard p,.ccard a{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream-dim);line-height:1.95;text-decoration:none;display:block;transition:color .3s}
+.ccard a:hover{color:var(--gold)}
+.hr-row{display:flex;justify-content:space-between;align-items:center;padding:.32rem 0;border-bottom:1px solid rgba(201,168,76,.06);transition:padding .22s}
+.hr-row:last-child{border-bottom:none}
+.hr-row:hover{padding-left:.4rem}
+.hr-day{color:var(--cream);font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400}
+.hr-time{color:var(--gold-dim);font-family:'Jost',sans-serif;font-size:.74rem}
+.hr-note{font-size:.65rem;color:var(--spice2);font-style:italic;text-align:center;margin-top:.6rem}
+.map-wrap{margin-top:3rem;border:1px solid rgba(201,168,76,.12);overflow:hidden;transition:border-color .4s}
+.map-wrap:hover{border-color:rgba(201,168,76,.35)}
+.map-wrap iframe{width:100%;height:400px;filter:grayscale(80%) invert(92%) sepia(15%);border:none;display:block;transition:filter .5s}
+.map-wrap:hover iframe{filter:grayscale(55%) invert(92%) sepia(20%)}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer{background:#050302;padding:5.5rem 3rem 2.5rem;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent)}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.3fr;gap:3.5rem;max-width:1320px;margin:0 auto 4rem}
+.footer-logo img{height:62px;margin-bottom:1.1rem;transition:filter .4s;filter:drop-shadow(0 0 10px rgba(201,168,76,.18))}
+.footer-logo img:hover{filter:drop-shadow(0 0 22px rgba(201,168,76,.42))}
+.footer-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.93rem;color:var(--cream-dim);margin-bottom:1.8rem;line-height:1.8}
+.socials{display:flex;gap:.65rem}
+.soc-btn{width:38px;height:38px;border:1px solid rgba(201,168,76,.22);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.78rem;color:var(--gold-dim);text-decoration:none;transition:var(--trans);position:relative;overflow:hidden}
+.soc-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scale(0);border-radius:50%;transition:transform .35s;z-index:0}
+.soc-btn:hover::before{transform:scale(2)}
+.soc-btn span{position:relative;z-index:1;transition:color .35s}
+.soc-btn:hover span{color:var(--deep)}
+.soc-btn:hover{border-color:var(--gold)}
+.footer-col h4{font-family:'Cinzel',serif;font-size:.67rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;position:relative;padding-bottom:.7rem}
+.footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:22px;height:1px;background:var(--gold-dim)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.65rem}
+.footer-col a{font-size:.8rem;color:var(--cream-dim);text-decoration:none;transition:var(--trans);display:inline-flex;align-items:center;gap:.35rem}
+.footer-col a::before{content:'';width:0;height:1px;background:var(--gold);transition:width .3s;display:inline-block;flex-shrink:0}
+.footer-col a:hover{color:var(--gold);padding-left:.3rem}
+.footer-col a:hover::before{width:10px}
+.footer-col p{font-size:.8rem;color:var(--cream-dim);line-height:1.95}
+.footer-bottom{max-width:1320px;margin:0 auto;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.08);display:flex;justify-content:space-between;align-items:center;font-size:.67rem;color:var(--gold-dim);letter-spacing:.1em;flex-wrap:wrap;gap:.8rem}
+.footer-bottom-links{display:flex;gap:1.5rem}
+.footer-bottom-links a{color:var(--gold-dim);text-decoration:none;transition:color .3s}
+.footer-bottom-links a:hover{color:var(--gold)}
+
+/* ══════════════════════════════
+   FLOATING CALL BUTTON
+══════════════════════════════ */
+.fab-call{position:fixed;bottom:2rem;right:2rem;z-index:800;background:var(--gold);color:var(--deep);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;text-decoration:none;box-shadow:0 4px 22px rgba(201,168,76,.42);transition:var(--trans);animation:fabPulse 2.8s infinite}
+.fab-call:hover{transform:scale(1.14) rotate(-8deg);box-shadow:0 8px 32px rgba(201,168,76,.65)}
+.fab-tooltip{position:absolute;right:66px;background:var(--dark2);color:var(--gold);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem .8rem;white-space:nowrap;border:1px solid rgba(201,168,76,.2);opacity:0;pointer-events:none;transition:opacity .3s;font-family:'Jost',sans-serif}
+.fab-call:hover .fab-tooltip{opacity:1}
+@keyframes fabPulse{0%,100%{box-shadow:0 4px 22px rgba(201,168,76,.42),0 0 0 0 rgba(201,168,76,.3)}55%{box-shadow:0 4px 32px rgba(201,168,76,.65),0 0 0 14px rgba(201,168,76,0)}}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media(max-width:1100px){
+  .dishes-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gi{grid-column:auto!important;grid-row:auto!important;height:230px}
+  .book-grid{grid-template-columns:1fr}
+  .book-img-side{min-height:300px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+}
+@media(max-width:900px){
+  nav{padding:.8rem 1.5rem;background:rgba(10,7,4,.95)}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .sw{padding:5rem 1.5rem}
+  #review-cta{padding:5rem 1.5rem}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}
+  .hist-cards{grid-template-columns:1fr}
+  .dishes-grid{grid-template-columns:1fr 1fr}
+  .menu-tabs{max-width:100%}
+  .tab-btn{min-width:70px;padding:.8rem .3rem;font-size:.58rem}
+  .menu-cats{grid-template-columns:1fr}
+  .drinks-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:1fr}
+  .reels-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .sp-box{padding:2rem 1.2rem}
+  .cbr{display:none}
+  .book-form{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .dishes-grid{grid-template-columns:1fr}
+  .about-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- FLOATING CALL -->
+<a href="tel:+447889482310" class="fab-call" title="Call Us">
+  📞
+  <span class="fab-tooltip">Call Now</span>
+</a>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#history" onclick="closeMob()">Our Story</a>
+  <a href="#menu" onclick="closeMob()">Menu</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#influencers" onclick="closeMob()">Reviews</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank" class="mb-cta" onclick="closeMob()">Book a Table</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="logo.png" alt="29 States"></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#history">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#influencers">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank" class="nav-book">Book a Table</a></li>
+  </ul>
+  <div class="hamburger" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="img1.jpg">
+    <source src="Video.mp4" type="video/mp4">
+  </video>
+  <!-- Fallback background if video fails -->
+  <div class="hero-img-fallback"></div>
+  <div class="hero-overlay"></div>
+  <!-- Particles -->
+  <div id="ptcls"></div>
+  <!-- Rings -->
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <!-- Corner brackets -->
+  <div class="cbr cbr-tl"></div><div class="cbr cbr-tr"></div>
+  <div class="cbr cbr-bl"></div><div class="cbr cbr-br"></div>
+  <!-- Content -->
+  <div class="hero-content">
+    <img src="logo.png" alt="29 States" class="hero-logo">
+    <p class="hero-eyebrow">Indian Restaurant · Catering · York</p>
+    <div class="hero-line"><span>✦</span></div>
+    <p class="hero-tag">Where Tradition Meets Culinary Excellence</p>
+    <p class="hero-sub">Opposite Clifford's Tower · Est. York</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-g">Explore Menu</a>
+      <a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank" class="btn-o">Book a Table</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-ind-line"></div>
+    <span class="scroll-ind-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-bar">
+  <div class="mq-track">
+    <span class="mq-item">Authentic Indian Cuisine <span>✦</span></span>
+    <span class="mq-item">29 States of India <span>✦</span></span>
+    <span class="mq-item">Private Catering Available <span>✦</span></span>
+    <span class="mq-item">Opposite Clifford's Tower · York <span>✦</span></span>
+    <span class="mq-item">Early Bird Menu Available <span>✦</span></span>
+    <span class="mq-item">Open 7 Days a Week <span>✦</span></span>
+    <span class="mq-item">Master Chef Jaswant Mehra <span>✦</span></span>
+    <span class="mq-item">Authentic Indian Cuisine <span>✦</span></span>
+    <span class="mq-item">29 States of India <span>✦</span></span>
+    <span class="mq-item">Private Catering Available <span>✦</span></span>
+    <span class="mq-item">Opposite Clifford's Tower · York <span>✦</span></span>
+    <span class="mq-item">Early Bird Menu Available <span>✦</span></span>
+    <span class="mq-item">Open 7 Days a Week <span>✦</span></span>
+    <span class="mq-item">Master Chef Jaswant Mehra <span>✦</span></span>
+  </div>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="sw">
+    <div class="about-grid">
+      <div class="rv-l">
+        <p class="eyebrow">Welcome to 29 States</p>
+        <h2 class="sec-title">A Journey Through<br><em>India's Flavours</em></h2>
+        <p class="about-p">India is a land of 29 states, each carrying its own culinary heritage — its own spices, techniques, and stories passed through generations. We bring all of them to your table in the heart of York, opposite the historic Clifford's Tower.</p>
+        <p class="about-p">Under the masterful guidance of Chef Jaswant Mehra, every dish is crafted with authentic ingredients and time-honoured recipes, served with the warmth and hospitality that defines Indian culture.</p>
+        <div class="about-stats">
+          <div class="astat rv"><div class="astat-n">29</div><div class="astat-l">Regional Cuisines</div></div>
+          <div class="astat rv"><div class="astat-n">100%</div><div class="astat-l">Authentic Recipes</div></div>
+          <div class="astat rv"><div class="astat-n">York</div><div class="astat-l">City Centre</div></div>
+          <div class="astat rv"><div class="astat-n">★ 4.9</div><div class="astat-l">Google Rating</div></div>
+        </div>
+        <div style="margin-top:2.5rem">
+          <a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank" class="btn-g">Reserve a Table</a>
+        </div>
+      </div>
+      <!-- 2×2 mosaic of YOUR images -->
+      <div class="about-mosaic rv-r">
+        <div class="am-item">
+          <img src="img7.jpg" alt="Dishes spread">
+          <div class="am-overlay"><span class="am-lbl">Signature Spread</span></div>
+        </div>
+        <div class="am-item">
+          <img src="img6.jpg" alt="Chicken tikka">
+          <div class="am-overlay"><span class="am-lbl">Chicken Tikka</span></div>
+        </div>
+        <div class="am-item">
+          <img src="img8.jpg" alt="29 States frontage">
+          <div class="am-overlay"><span class="am-lbl">Our Restaurant</span></div>
+        </div>
+        <div class="am-item">
+          <img src="img11.jpg" alt="Dining table">
+          <div class="am-overlay"><span class="am-lbl">Dining Experience</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HISTORY ═══════════ -->
+<section id="history">
+  <div class="sw">
+    <div class="hist-bg"></div>
+    <div class="hist-inner rv">
+      <p class="eyebrow" style="justify-content:center">Our Heritage</p>
+      <h2 class="sec-title" style="text-align:center">Embracing the <em>Timeless Flavors of India</em></h2>
+      <div class="hist-ornament"></div>
+      <p class="hist-quote">When we first opened our doors, India was home to <strong>29 states</strong>, each with its unique flavours and traditions. Although India now comprises 28 states, the essence of our cuisine remains unchanged.</p>
+      <div class="hist-ornament"></div>
+      <p class="hist-quote">Our restaurant's name, inspired by the 29 states, serves as a testament to the <strong>rich culinary heritage of India</strong>. Our chefs have carefully crafted a menu that weaves together the bold flavours, vibrant spices, and aromatic ingredients from across the country.</p>
+      <div class="hist-ornament"></div>
+      <p class="hist-quote">At <strong>The Indian Kitchen, York</strong>, we invite you to savour the timeless appeal of Indian cuisine. Our dishes will transport you on a culinary journey across the country. Join us, and let the aromas and flavours of India captivate your senses.</p>
+    </div>
+    <!-- 3 feature cards — no images, decorative only -->
+    <div class="hist-cards rv">
+      <div class="hcard"><span class="hcard-icon">🌶️</span><div class="hcard-title">Authentic Spices</div><div class="hcard-text">Hand-ground spice blends sourced directly from across India's 29 regions — from Kashmiri saffron to Kerala peppercorn.</div></div>
+      <div class="hcard"><span class="hcard-icon">👨‍🍳</span><div class="hcard-title">Chef Jaswant Mehra</div><div class="hcard-text">Owner and Executive Chef with decades of culinary mastery across India and the UK — every dish carries his signature.</div></div>
+      <div class="hcard"><span class="hcard-icon">🏛️</span><div class="hcard-title">Historic Setting</div><div class="hcard-text">Dine opposite the iconic Clifford's Tower in the heart of York — where Indian heritage meets English history.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SIGNATURE DISHES ═══════════ -->
+<section id="showcase">
+  <div class="sw">
+    <div class="showcase-hdr">
+      <div class="rv-l">
+        <p class="eyebrow">Chef's Selection</p>
+        <h2 class="sec-title">Must-Try <em>Signature Dishes</em></h2>
+      </div>
+      <a href="#menu" class="btn-o rv-r">View Full Menu</a>
+    </div>
+    <div class="dishes-grid">
+      <div class="dish-card rv">
+        <div class="dish-img">
+          <img src="img1.jpg" alt="Thali">
+          <div class="dish-img-grad"></div>
+          <div class="dish-badge">⭐ Signature</div>
+        </div>
+        <div class="dish-body">
+          <div class="dish-name">The Grand Thali</div>
+          <div class="dish-desc">A complete feast — curries, dal, rice, naan, pickles & Indian sweet, all on one magnificent platter</div>
+          <div class="dish-foot"><span class="dish-price">£15.95</span><span class="dish-tag">🍱 Thali</span></div>
+        </div>
+      </div>
+      <div class="dish-card rv">
+        <div class="dish-img">
+          <img src="img10.jpg" alt="Lamb curry">
+          <div class="dish-img-grad"></div>
+          <div class="dish-badge">🔥 Popular</div>
+        </div>
+        <div class="dish-body">
+          <div class="dish-name">Lal Maas</div>
+          <div class="dish-desc">Marinated lamb chunks with Rajasthani red chillies, slow-cooked with onion & tomato</div>
+          <div class="dish-foot"><span class="dish-price">£12.95</span><span class="dish-tag">🐑 Lamb</span></div>
+        </div>
+      </div>
+      <div class="dish-card rv">
+        <div class="dish-img">
+          <img src="img9.jpg" alt="Seared Scallops">
+          <div class="dish-img-grad"></div>
+          <div class="dish-badge">🏆 Award</div>
+        </div>
+        <div class="dish-body">
+          <div class="dish-name">Seared Scallops</div>
+          <div class="dish-desc">Saffron & curry powder marinated, served with Makhani sauce, shallots & tamarind vinaigrette</div>
+          <div class="dish-foot"><span class="dish-price">£8.95</span><span class="dish-tag">🦪 Seafood</span></div>
+        </div>
+      </div>
+      <div class="dish-card rv">
+        <div class="dish-img">
+          <img src="img6.jpg" alt="Chicken Tikka">
+          <div class="dish-img-grad"></div>
+          <div class="dish-badge">❤️ Favourite</div>
+        </div>
+        <div class="dish-body">
+          <div class="dish-name">Punjabi Chicken Tikka</div>
+          <div class="dish-desc">Overnight marinated chicken in hung yogurt & ginger garlic, finished in the clay tandoor</div>
+          <div class="dish-foot"><span class="dish-price">£5.95</span><span class="dish-tag">🍗 Tandoor</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MENU ═══════════ -->
+<section id="menu">
+  <div class="sw">
+    <p class="eyebrow rv">Culinary Journey</p>
+    <h2 class="sec-title rv" style="margin-bottom:2.5rem">Our <em>Menus</em></h2>
+    <div class="menu-tabs rv">
+      <button class="tab-btn active" onclick="switchTab('alacarte',this)">À la Carte</button>
+      <button class="tab-btn" onclick="switchTab('earlybird',this)">Early Bird</button>
+      <button class="tab-btn" onclick="switchTab('setmenu',this)">Set Menu</button>
+      <button class="tab-btn" onclick="switchTab('drinks',this)">Drinks</button>
+    </div>
+
+    <!-- ── À LA CARTE ── -->
+    <div class="tab-pane active" id="tab-alacarte">
+      <div class="menu-cats">
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🌿</span><div class="mcat-title">Starters – Vegetarian</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Poppadum</div></div><div class="mi-p">£1.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Pickle Tray</div></div><div class="mi-p">£1.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dal Shorba</div><div class="mi-d">Tomato and red lentil soup served with cumin bread</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Tiranga Tikka</div><div class="mi-d">Paneer stuffed with mint & raisins, marinated with chef's special spices, finished in tandoor</div></div><div class="mi-p">£6.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Samosa</div><div class="mi-d">Shortcrust pastry pockets stuffed with potato and peas, deep fried</div></div><div class="mi-p">£5.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Mushroom Lajawab</div><div class="mi-d">Flat mushroom marinated with lemon and garlic topping with peppers and cheese</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Onion Bhaji</div><div class="mi-d">Fritters made with sliced onion, potatoes, coriander mix with spices and gram flour</div></div><div class="mi-p">£4.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Jodhpuri Tandoori Aloo</div><div class="mi-d">Stuffed whole potato with spice mixture, marinated and cooked in tandoor</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Buff Vada</div><div class="mi-d">Spiced potato & coconut dumpling mixed with raisins and spices, deep fried</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Roll</div><div class="mi-d">Punjabi spring roll stuffed with vegetables and paneer</div></div><div class="mi-p">£5.95</div></div>
+            <div class="sub-h">Chaat Chatori</div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Gol Gappa</div><div class="mi-d">Semolina balls, potato & spice filled, flavored spiced water</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dahi Papdi</div><div class="mi-d">Papdi topped with chopped onion, boiled potatoes, sweet curd and chutneys</div></div><div class="mi-p">£5.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Chaat</div></div><div class="mi-p">£4.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Chana Chaat</div></div><div class="mi-p">£5.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Tikka Chaat</div></div><div class="mi-p">£6.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🔥</span><div class="mcat-title">Starters – Non-Veg</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Meat Samosa</div><div class="mi-d">Shortcrust dough pockets stuffed with lamb mince and chef special spices</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Chicken Tikka</div><div class="mi-d">Chicken breast marinated in hung yogurt, ginger garlic paste and spices, cooked in tandoor</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">King Prawns Goan Tandoori</div><div class="mi-d">Prawns marinated with spiced hung yogurt, cooked in tandoor with onion and peppers</div></div><div class="mi-p">£7.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Bengali Salmon Tikka</div><div class="mi-d">Marinated in Bengali spices and finished in tandoor</div></div><div class="mi-p">£7.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Fish Ambala Shahi</div><div class="mi-d">Sepangash fish marinated with gram flour, egg and chef special spices</div></div><div class="mi-p">£6.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Seared Scallops ⭐</div><div class="mi-d">Marinated in saffron & curry powder, served with coulis, shallots & tamarind grapes</div></div><div class="mi-p">£8.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Rajasthani Seabass</div><div class="mi-d">Marinated with chef special spices and cooked in pan</div></div><div class="mi-p">£7.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chapien Lucknowi</div><div class="mi-d">Lamb chops marinated in Lucknowi spices cooked over charcoal</div></div><div class="mi-p">£6.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kakori Seek Kebab</div><div class="mi-d">Mince lamb with finely chopped onions, chillies, coriander, ginger and garlic, finished in tandoor</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Mix Platter – Meat / Veggie</div></div><div class="mi-p">£6.95 / £5.95</div></div>
+            <div class="sub-h">Sizzlers from Clay Oven</div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Non-Veg Sizzler</div><div class="mi-d">Chicken tikka, lambseek, meat samosa or salmon served with dips</div></div><div class="mi-p">£17.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Vegetarian Sizzler</div><div class="mi-d">Paneer tikka, samosa, mushroom lajawab, onion bhaji, tandoori aloo with dips</div></div><div class="mi-p">£15.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🍱</span><div class="mcat-title">Thali & Specials</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Non Veg Thali</div><div class="mi-d">Mango Lassi, Poppadum, Pickle, Salad, Chicken Tikka, Fish Ambala, Lamb Curry, Chicken Curry, Dal Tadka, Naan & Rice, Indian Sweets</div></div><div class="mi-p">£16.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Veg Thali</div><div class="mi-d">Mango Lassi, Poppadum, Pickle, Salad, Paneer Tiranga Tikka, Paneer Roll, Onion Bhaji, Paneer Curry, Subz Dumpukht, Dal Makhni, Dal Tadka, Naan & Rice, Indian Sweets</div></div><div class="mi-p">£15.95</div></div>
+            <div class="sub-h">Weight Watchers</div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Grilled Butterfly Chicken</div><div class="mi-d">Served with garden salad and house dressing</div></div><div class="mi-p">£11.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Pan Fried Salmon, COD or Seabass</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Greek or Indian Cheese Salad</div></div><div class="mi-p">£10.50</div></div>
+            <div class="sub-h">👶 Naughty Monkeys</div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Nuggets & Chips</div></div><div class="mi-p">£4.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Fish Fingers & Chips</div></div><div class="mi-p">£4.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🍗</span><div class="mcat-title">Main – Chicken</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Butter Chicken</div><div class="mi-d">Tomato based, mildly spiced curry finish with honey & cream</div></div><div class="mi-p">£10.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Murg Achari 🌶</div><div class="mi-d">Chicken chunks in onion & garlic sauce spiced with Indian pickles</div></div><div class="mi-p">£10.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kadai Chicken 🌶🌶</div><div class="mi-d">Diced chicken with ginger garlic paste, crushed coriander, chillies, fresh herbs</div></div><div class="mi-p">£11.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Lahori 🌶🌶</div><div class="mi-d">Yogurt, lahori spices, onion, tomato, pickled chillies, olives and fresh coriander</div></div><div class="mi-p">£11.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Balti 🌶</div><div class="mi-d">Fresh garlic, ginger, tomato, chillies, finished with balti spices and herbs</div></div><div class="mi-p">£11.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Chettinad 🌶🌶</div><div class="mi-d">Coconut based sauce with rich depth of flavours and high notes in every bite</div></div><div class="mi-p">£11.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Tikka Masala 🌶</div><div class="mi-d">Chicken tikka cooked with ginger garlic and chillies</div></div><div class="mi-p">£11.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Lababdar 🌶</div><div class="mi-d">Chicken in a rich Mughlai gravy with tomato, butter</div></div><div class="mi-p">£10.95</div></div>
+            <div class="sub-h">Classic Favourites</div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Korma, Bhuna, Madras, Vindaloo, Dopiaza, Pathia, Jalfrezi</div></div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">— Chicken</div></div><div class="mi-p">£11.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">— Lamb</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">— Vegetarian</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">— King Prawn</div></div><div class="mi-p">£13.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🐑</span><div class="mcat-title">Main – Lamb & Seafood</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Lal Maas 🌶🌶</div><div class="mi-d">Marinated lamb chunks with Rajasthani red chillies, cooked with onion, tomato</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Rara Gosht 🌶</div><div class="mi-d">Lamb chunks & minced lamb cooked with ginger, garlic paste, fresh spices</div></div><div class="mi-p">£11.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Hydrabadi Keema Mutter 🌶🌶</div></div><div class="mi-p">£11.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kashmiri Lamb Rogan Josh 🌶🌶</div><div class="mi-d">Hot & spicy slow cooked lamb curry</div></div><div class="mi-p">£11.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Lamb Shank Dumpukht ⭐</div><div class="mi-d">Braised in rum, onion, yogurt, saffron & touch of mint</div></div><div class="mi-p">£14.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Lamb KolhaPuri 🌶🌶🌶</div><div class="mi-d">Very spicy – lamb chunks with kolhapuri spices</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Machar Jhol 🌶🌶</div><div class="mi-d">Haddock cooked with mustard curry leaves, tomatoes, Bengali spices</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Goan King Prawn Curry 🌶🌶</div><div class="mi-d">Marinated prawn with onions, green chillies, tamarind, coconut milk</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Cod Masala 🌶</div></div><div class="mi-p">£12.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Salmon Kerela Curry 🌶</div></div><div class="mi-p">£12.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🌿</span><div class="mcat-title">Main – Vegetarian</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dum Aloo Benarsi 🌶</div><div class="mi-d">Spicy paneer stuffed potato cooked in buttery sauce</div></div><div class="mi-p">£9.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Matar Paneer 🌶</div><div class="mi-d">Green peas, paneer cooked with spices, onion, tomato</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Matar Malai Mushroom 🌶</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Subz Dumpukht</div><div class="mi-d">Mixed vegetables with yogurt, fenugreek leaves and spices</div></div><div class="mi-p">£9.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kabuli Chole Masala 🌶🌶</div></div><div class="mi-p">£9.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Khurchan 🌶🌶</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Shahi Paneer 🌶</div><div class="mi-d">Tomato based rich sauce cooked with Indian cheese</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Tikka Masala</div></div><div class="mi-p">£10.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Saag Paneer 🌶🌶</div><div class="mi-d">Paneer with blanched spinach, rocket, garlic, cinnamon, mustard leaves, finished with yogurt</div></div><div class="mi-p">£9.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dal Makhni 🌶</div><div class="mi-d">Punjabi style creamy flavorful, mildly spiced dal</div></div><div class="mi-p">£10.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dhaba Dal / Dal Panchmel 🌶</div></div><div class="mi-p">£9.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Gobi Masala / Aloo Palak</div></div><div class="mi-p">£9.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Bombay Aloo</div></div><div class="mi-p">£8.95</div></div>
+          </div>
+        </div>
+        <div class="mcat rv">
+          <div class="mcat-hdr"><span class="mcat-icon">🍚</span><div class="mcat-title">Rice & Breads</div></div>
+          <div class="mcat-body">
+            <div class="mi"><div class="mi-l"><div class="mi-n">Basmati Rice (Boiled/Pulao/Keema/Veg/Garlic)</div></div><div class="mi-p">£3.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Egg / Jeera / Saffron Mushroom Rice</div></div><div class="mi-p">£4.00</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dumpukht Biryani 🌶🌶</div><div class="mi-d">Veg, Chicken or Lamb — served with curry sauce</div></div><div class="mi-p">£13.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Prawn Biryani 🌶🌶</div></div><div class="mi-p">£14.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Tandoori Roti</div></div><div class="mi-p">£2.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Traditional Naan</div></div><div class="mi-p">£2.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Garlic & Coriander Naan</div></div><div class="mi-p">£2.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Garlic & Cheese Naan</div></div><div class="mi-p">£4.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Peshawari Naan</div></div><div class="mi-p">£4.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Lacha Methi Paratha</div><div class="mi-d">Layered bread topped with fenugreek leaves</div></div><div class="mi-p">£3.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kulcha</div><div class="mi-d">Keema, potato or onion stuffed bread</div></div><div class="mi-p">£4.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chips / Salad</div></div><div class="mi-p">£3.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Raita</div><div class="mi-d">Spiced yogurt dip with chopped cucumber, crushed cumin seeds & fresh coriander</div></div><div class="mi-p">£2.95</div></div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:2rem;font-size:.73rem;color:var(--gold-dim);letter-spacing:.08em">Food allergies or intolerances: Please speak to a member of our team if you have any specific dietary requirements.</p>
+    </div>
+
+    <!-- ── EARLY BIRD ── -->
+    <div class="tab-pane" id="tab-earlybird">
+      <div class="sp-wrap">
+        <div class="sp-box rv">
+          <div class="sp-title">Early Bird Menu</div>
+          <div class="sp-sub">2 Course — Available Selected Hours</div>
+          <div class="sdiv">Starter – Choose One</div>
+          <div class="si"><div class="si-n">Punjabi Chicken Tikka</div></div>
+          <div class="si"><div class="si-n">Fish Ambala Shahi</div></div>
+          <div class="si"><div class="si-n">Onion Bhaji</div></div>
+          <div class="si"><div class="si-n">Sheekh Kebab (Chicken or Lamb)</div></div>
+          <div class="sdiv">Main – Choose One</div>
+          <div class="si"><div class="si-n">Kadai Chicken</div></div>
+          <div class="si"><div class="si-n">Chicken Balti</div></div>
+          <div class="si"><div class="si-n">Lamb Rara Gosht</div></div>
+          <div class="si"><div class="si-n">Lamb Rogan Josh</div></div>
+          <div class="si"><div class="si-n">Sahi Paneer (Veg.)</div></div>
+          <div class="sdiv">Dessert – Choose One</div>
+          <div class="si"><div class="si-n">Ras Malai</div><div class="si-d">Sweetened cottage cheese dumpling</div></div>
+          <div class="si"><div class="si-n">Gulab Jamun</div><div class="si-d">Fried doughnut style dumplings served in sugar syrup</div></div>
+          <div class="sp-note">Rice and bread are excluded and are charged a supplement of £3.00 each if added</div>
+          <div class="al-note">Please speak to a member of our team if you have any specific allergies, intolerances or dietary requirements</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SET MENU ── -->
+    <div class="tab-pane" id="tab-setmenu">
+      <div class="sp-wrap">
+        <div class="sp-box rv">
+          <div class="sp-title">Set Menu</div>
+          <div class="sp-sub">Please pick one – Vegetarian or Meat</div>
+          <div class="sdiv">Mix Vegetarian Platter for One</div>
+          <p style="text-align:center;font-size:.72rem;color:var(--gold-dim);margin-bottom:1rem">includes one piece each</p>
+          <div class="si"><div class="si-n">Paneer Tikka</div><div class="si-d">Paneer stuffing with mint and raisins, marinated with chef special spices finished in tandoor</div></div>
+          <div class="si"><div class="si-n">Onion Bhaji</div></div>
+          <div class="si"><div class="si-n">Mushroom Lajawab</div></div>
+          <div class="si"><div class="si-n">Vegetable Samosa</div></div>
+          <div class="sdiv">Mix Meat Platter for One</div>
+          <p style="text-align:center;font-size:.72rem;color:var(--gold-dim);margin-bottom:1rem">includes one piece each</p>
+          <div class="si"><div class="si-n">Chicken Tikka</div><div class="si-d">Chicken breast chunks marinated in hung yogurt, ginger garlic paste, spices cooked in tandoor</div></div>
+          <div class="si"><div class="si-n">Seekh Kebab</div><div class="si-d">Minced lamb with finely chopped onions, chillies, coriander, ginger and garlic, finished in tandoor</div></div>
+          <div class="si"><div class="si-n">Fish Ambala Shahi</div></div>
+          <div class="si"><div class="si-n">Meat Samosa</div></div>
+          <div class="sdiv">Main Course – Choose One</div>
+          <div class="si"><div class="si-n">Butter Chicken</div><div class="si-d">Tomato-based mildly spiced curry, finished with honey and cream</div></div>
+          <div class="si"><div class="si-n">Chicken Tikka Masala</div></div>
+          <div class="si"><div class="si-n">Rara Gosht</div></div>
+          <div class="si"><div class="si-n">Chicken Chettinad</div></div>
+          <div class="si"><div class="si-n">Paneer Tikka Masala</div></div>
+          <div class="si"><div class="si-n">Dal Makhni</div></div>
+          <div class="sp-note">Rice or Naan Per Person included in the deal</div>
+          <div class="al-note">Please speak to a member of our team if you have any specific allergies, intolerances or dietary requirements</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DRINKS ── -->
+    <div class="tab-pane" id="tab-drinks">
+      <div class="drinks-grid">
+        <div class="dcat rv">
+          <div class="dcat-title">🍷 Wines by the Glass</div>
+          <div class="di"><div><div class="di-n">Luna Azul Sauvignon Blanc</div><div class="di-d">Chile – passion fruit & guava</div></div><div class="di-p">175ml £6 / 250ml £7.50</div></div>
+          <div class="di"><div><div class="di-n">Farfalla Pinot Grigio</div><div class="di-d">Italy – fresh apple and pear</div></div><div class="di-p">175ml £6 / 250ml £7.50</div></div>
+          <div class="di"><div><div class="di-n">Charlie Zin White Zinfandel</div><div class="di-d">USA – Californian Rosé, summer fruits</div></div><div class="di-p">175ml £6 / 250ml £7.50</div></div>
+          <div class="di"><div><div class="di-n">Luna Azul Merlot</div><div class="di-d">Chile – plum, sweet spice, hint of chocolate</div></div><div class="di-p">175ml £6 / 250ml £7.50</div></div>
+        </div>
+        <div class="dcat rv">
+          <div class="dcat-title">🥂 Sparkling & Champagne</div>
+          <div class="di"><div><div class="di-n">Prosecco, Famiglia Botter D.O.C</div><div class="di-d">Italy – mature apple and fresh fruit</div></div><div class="di-p">£24.95 / 20cl £7.50</div></div>
+          <div class="di"><div><div class="di-n">Prosecco Rosé, Famiglia Botter D.O.C</div><div class="di-d">Italy – peach, green apple, lemon</div></div><div class="di-p">£24.95</div></div>
+          <div class="di"><div><div class="di-n">Charles Joubert Spécial Réserve Champagne</div><div class="di-d">France – lemony nose, hints of brioche</div></div><div class="di-p">£50.00</div></div>
+        </div>
+        <div class="dcat rv">
+          <div class="dcat-title">🍾 Wine – By the Bottle</div>
+          <div class="di"><div class="di-n">Inkosi Chenin Blanc – S. Africa</div><div class="di-p">£21.95</div></div>
+          <div class="di"><div class="di-n">Down Under Chardonnay – Australia</div><div class="di-p">£22.95</div></div>
+          <div class="di"><div class="di-n">Akarana Sauvignon Blanc – NZ</div><div class="di-p">£27.95</div></div>
+          <div class="di"><div class="di-n">Patriarche Viognier – France</div><div class="di-p">£25.95</div></div>
+          <div class="di"><div class="di-n">Farfalla Pinot Grigio Blush Rosé</div><div class="di-p">£21.95</div></div>
+          <div class="di"><div class="di-n">Writer's Block Shiraz – S. Africa</div><div class="di-p">£22.95</div></div>
+          <div class="di"><div class="di-n">Monterey Bay Zinfandel – USA</div><div class="di-p">£24.95</div></div>
+          <div class="di"><div class="di-n">Viña Cerrada Tempranillo Rioja – Spain</div><div class="di-p">£24.95</div></div>
+          <div class="di"><div class="di-n">Club de Campo Malbec – Argentina</div><div class="di-p">£23.95</div></div>
+        </div>
+        <div class="dcat rv">
+          <div class="dcat-title">🍸 Gin, Spirits & Whisky</div>
+          <div class="di"><div class="di-n">Whitley Neill Blood Orange Gin</div><div class="di-p">£6.95</div></div>
+          <div class="di"><div class="di-n">Slingsby Rhubarb Gin (Yorkshire)</div><div class="di-p">£6.95</div></div>
+          <div class="di"><div class="di-n">Bloom Raspberry & Rhubarb Gin</div><div class="di-p">£6.95</div></div>
+          <div class="di"><div class="di-n">Puerto de Indias Strawberry Gin</div><div class="di-p">£6.95</div></div>
+          <div class="di"><div class="di-n">Masons Citrus Yorkshire Vodka</div><div class="di-p">£6.50</div></div>
+          <div class="di"><div class="di-n">Bacardi Spiced Rum</div><div class="di-p">£5.50</div></div>
+          <div class="di"><div class="di-n">Monkey Shoulder Blended Malt Whisky</div><div class="di-p">£6.95</div></div>
+          <div class="di"><div class="di-n">Toki Japanese Whisky</div><div class="di-p">£7.50</div></div>
+          <div class="di"><div class="di-n">Amrut Fusion Indian Whisky</div><div class="di-p">£7.50</div></div>
+        </div>
+        <div class="dcat rv">
+          <div class="dcat-title">🍺 Beers, Ciders & Soft Drinks</div>
+          <div class="di"><div class="di-n">Kingfisher Beer</div><div class="di-p">½pt £3.95 / pt £6.25</div></div>
+          <div class="di"><div class="di-n">Kingfisher Bottle</div><div class="di-p">£5.95</div></div>
+          <div class="di"><div class="di-n">King Cobra 750ml</div><div class="di-p">£10.95</div></div>
+          <div class="di"><div class="di-n">Cobra 660ml</div><div class="di-p">£6.25</div></div>
+          <div class="di"><div class="di-n">Magners Cider / Rekorderlig 500ml</div><div class="di-p">£5.50</div></div>
+          <div class="di"><div class="di-n">Brewdog Punk IPA / Wingman 330ml</div><div class="di-p">£4.95</div></div>
+          <div class="di"><div class="di-n">Coke / Diet Coke / Lemonade / Tonic</div><div class="di-p">£3.25</div></div>
+          <div class="di"><div class="di-n">Fruit Juices (Orange, Mango, Guava)</div><div class="di-p">£2.95</div></div>
+          <div class="di"><div class="di-n">Still & Sparkling Water</div><div class="di-p">£2.50</div></div>
+          <div class="di"><div class="di-n">Tea / Coffee / Indian Chai</div><div class="di-p">£3.50 – £4.00</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY ═══════════ -->
+<section id="gallery">
+  <div class="sw">
+    <p class="eyebrow rv" style="justify-content:center">Visual Journey</p>
+    <h2 class="sec-title rv" style="text-align:center">Our Food & <em>Ambiance</em></h2>
+    <div class="gallery-grid rv">
+      <!-- img1 = Thali (tall) -->
+      <div class="gi">
+        <img src="img1.jpg" alt="Grand Thali">
+        <div class="gi-ov"><div class="gi-title">The Grand Thali</div><div class="gi-sub">A feast for the senses</div></div>
+      </div>
+      <!-- img3 = Chicken tikka -->
+      <div class="gi">
+        <img src="img6.jpg" alt="Chicken tikka on board">
+        <div class="gi-ov"><div class="gi-title">Chicken Tikka</div><div class="gi-sub">Tandoor-fired perfection</div></div>
+      </div>
+      <!-- img6 = Seared Scallops -->
+      <div class="gi">
+        <img src="img9.jpg" alt="Seared Scallops">
+        <div class="gi-ov"><div class="gi-title">Seared Scallops</div><div class="gi-sub">Makhani & tamarind</div></div>
+      </div>
+      <!-- img4 = Full spread (tall) -->
+      <div class="gi">
+        <img src="img7.jpg" alt="Full spread">
+        <div class="gi-ov"><div class="gi-title">Signature Spread</div><div class="gi-sub">The full 29 States experience</div></div>
+      </div>
+      <!-- img8 = Table dining (wide) -->
+      <div class="gi">
+        <img src="img11.jpg" alt="Dining table">
+        <div class="gi-ov"><div class="gi-title">Fine Dining</div><div class="gi-sub">Authentic atmosphere</div></div>
+      </div>
+      <!-- img5 = Restaurant frontage -->
+      <div class="gi">
+        <img src="img8.jpg" alt="29 States frontage">
+        <div class="gi-ov"><div class="gi-title">Our Restaurant</div><div class="gi-sub">Opposite Clifford's Tower</div></div>
+      </div>
+      <!-- img2 = Naan -->
+      <div class="gi">
+        <img src="img3.jpg" alt="Fresh naan">
+        <div class="gi-ov"><div class="gi-title">Fresh Naan</div><div class="gi-sub">Baked in clay oven</div></div>
+      </div>
+      <!-- img10 = King prawn -->
+      <div class="gi">
+        <img src="img4.jpg" alt="King prawn">
+        <div class="gi-ov"><div class="gi-title">King Prawn</div><div class="gi-sub">Goan tandoori style</div></div>
+      </div>
+      <!-- img11 = Dessert -->
+      <div class="gi">
+        <img src="img5.jpg" alt="Dessert">
+        <div class="gi-ov"><div class="gi-title">Sweet Endings</div><div class="gi-sub">Indulgent Indian desserts</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INFLUENCERS / INSTAGRAM REELS ═══════════ -->
+<section id="influencers">
+  <div class="sw">
+    <p class="eyebrow rv" style="justify-content:center">As Seen On Instagram</p>
+    <h2 class="sec-title rv" style="text-align:center">What <em>Influencers Say</em></h2>
+    <p class="infl-intro rv">Food lovers from across Yorkshire and beyond have been sharing their 29 States experience — watch their reels below.</p>
+    <div class="reels-grid">
+
+      <div class="reel-card rv">
+        <div class="reel-embed" style="position:relative">
+          <div class="ig-badge">Instagram Reel</div>
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DRZ60MKCL40/"
+            data-instgrm-version="14"
+            style="background:#000;border:0;margin:0;padding:0;width:100%;min-width:100%">
+          </blockquote>
+        </div>
+        <div class="reel-info">
+          <div class="reel-handle">@29states_indianrestaurant</div>
+          <div class="reel-caption">"An extraordinary culinary journey through the flavours of all 29 states of India — right here in York!"</div>
+          <a href="https://www.instagram.com/p/DRZ60MKCL40/" target="_blank" class="reel-link">Watch on Instagram</a>
+        </div>
+      </div>
+
+      <div class="reel-card rv">
+        <div class="reel-embed" style="position:relative">
+          <div class="ig-badge">Instagram Reel</div>
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/DJjWSt-oKgi/"
+            data-instgrm-version="14"
+            style="background:#000;border:0;margin:0;padding:0;width:100%;min-width:100%">
+          </blockquote>
+        </div>
+        <div class="reel-info">
+          <div class="reel-handle">@29states_indianrestaurant</div>
+          <div class="reel-caption">"The Lamb Shank Dumpukht is absolutely incredible — melt-in-your-mouth perfection from the clay oven!"</div>
+          <a href="https://www.instagram.com/p/DJjWSt-oKgi/" target="_blank" class="reel-link">Watch on Instagram</a>
+        </div>
+      </div>
+
+      <div class="reel-card rv">
+        <div class="reel-embed" style="position:relative">
+          <div class="ig-badge">Instagram Reel</div>
+          <blockquote class="instagram-media"
+            data-instgrm-captioned
+            data-instgrm-permalink="https://www.instagram.com/reel/C_SZ9bfob-X/"
+            data-instgrm-version="14"
+            style="background:#000;border:0;margin:0;padding:0;width:100%;min-width:100%">
+          </blockquote>
+        </div>
+        <div class="reel-info">
+          <div class="reel-handle">@29states_indianrestaurant</div>
+          <div class="reel-caption">"From vibrant street food starters to rich aromatic mains — 29 States is a definitive must-visit in Yorkshire."</div>
+          <a href="https://www.instagram.com/p/C_SZ9bfob-X/" target="_blank" class="reel-link">Watch on Instagram</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Instagram embed script -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience">
+  <div class="sw">
+    <p class="eyebrow rv">What We Offer</p>
+    <h2 class="sec-title rv">The Complete <em>29 States Experience</em></h2>
+    <div class="exp-grid">
+      <div class="exp-card rv">
+        <div class="exp-img"><img src="img8.jpg" alt="Dine in"><div class="exp-img-grad"></div></div>
+        <div class="exp-body"><div class="exp-num">01</div><div class="exp-title">Dine In</div><div class="exp-text">Immerse yourself in our warm, elegant dining room opposite Clifford's Tower. From intimate dinners for two to large family celebrations, every visit is crafted to be unforgettable.</div></div>
+      </div>
+      <div class="exp-card rv">
+        <div class="exp-img"><img src="img7.jpg" alt="Catering"><div class="exp-img-grad"></div></div>
+        <div class="exp-body"><div class="exp-num">02</div><div class="exp-title">Private Catering</div><div class="exp-text">Bring the flavours of 29 States to your event. Weddings, corporate functions, private parties — our experienced catering team serves anywhere in Yorkshire.</div></div>
+      </div>
+      <div class="exp-card rv">
+        <div class="exp-img"><img src="img6.jpg" alt="Takeaway"><div class="exp-img-grad"></div></div>
+        <div class="exp-body"><div class="exp-num">03</div><div class="exp-title">Takeaway</div><div class="exp-text">Can't dine with us tonight? Our full menu is available for takeaway — freshly prepared with the same care and authentic spices as always, ready when you are.</div></div>
+      </div>
+      <div class="exp-card rv">
+        <div class="exp-img"><img src="img1.jpg" alt="Events"><div class="exp-img-grad"></div></div>
+        <div class="exp-body"><div class="exp-num">04</div><div class="exp-title">Events & Parties</div><div class="exp-text">Host your next celebration with us. Bespoke menus tailored to your occasion and all dietary requirements — an evening your guests will never forget.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CHEF FEATURE ═══════════ -->
+<section style="background:var(--dark2);overflow:hidden">
+  <div class="sw">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center" class="rv">
+      <div style="position:relative;overflow:hidden;aspect-ratio:3/4;border:1px solid rgba(201,168,76,.15)">
+        <img src="img2.jpg" alt="Chef Jaswant Mehra" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:transform .75s,filter .5s">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,4,.8) 0%,transparent 60%)"></div>
+        <div style="position:absolute;bottom:1.8rem;left:1.8rem">
+          <div style="font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Owner & Executive Chef</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);font-style:italic">Jaswant Mehra</div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Meet the Chef</p>
+        <h2 class="sec-title">The Mastermind<br><em>Behind the Flavours</em></h2>
+        <p class="sec-body" style="margin-bottom:1.2rem">Chef Jaswant Mehra is the heart and soul of 29 States. With decades of culinary experience across India and the United Kingdom, he has crafted a menu that celebrates the diverse regional cuisines of all 29 states.</p>
+        <p class="sec-body" style="margin-bottom:2rem">Every dish that leaves our kitchen carries his passion for authenticity, his mastery of spice, and his belief that food is the greatest storyteller.</p>
+        <a href="#book" class="btn-g">Experience His Cuisine</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section id="testimonials">
+  <div class="sw">
+    <p class="eyebrow rv" style="justify-content:center">Guest Reviews</p>
+    <h2 class="sec-title rv" style="text-align:center">What Our <em>Guests Say</em></h2>
+    <div class="t-grid">
+      <div class="t-card rv"><div class="t-stars">★★★★★</div><div class="t-text">"Absolutely the best Indian restaurant in York. The lamb rogan josh was perfectly spiced and the naan was fresh out of the tandoor. We'll be back every week!"</div><div class="t-bar"></div><div class="t-author">— Sarah M., York</div></div>
+      <div class="t-card rv"><div class="t-stars">★★★★★</div><div class="t-text">"We hired 29 States for our wedding reception and the catering was beyond our expectations. Every guest was raving about the food. Truly authentic flavours."</div><div class="t-bar"></div><div class="t-author">— James & Priya K.</div></div>
+      <div class="t-card rv"><div class="t-stars">★★★★★</div><div class="t-text">"The concept of celebrating all 29 states of India through the menu is genius. You can actually taste the regional difference in every dish. A genuine culinary journey!"</div><div class="t-bar"></div><div class="t-author">— Amir H., Leeds</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GOOGLE REVIEW CTA ═══════════ -->
+<div id="review-cta">
+  <div class="review-bg-img"><img src="img7.jpg" alt="bg"></div>
+  <div class="review-overlay"></div>
+  <div class="review-inner rv">
+    <div class="review-stars">★★★★★</div>
+    <p class="eyebrow" style="justify-content:center;margin-bottom:1rem">Share Your Experience</p>
+    <h2 class="sec-title" style="text-align:center">Leave Us a <em>Google Review</em></h2>
+    <p class="review-text">Enjoyed your experience at 29 States? Your kind words help other food lovers discover authentic Indian cuisine in York and mean the world to our team.</p>
+    <a href="https://g.page/r/CchS7lwRi5_8EBM/review" target="_blank" class="btn-review"><span>✦ Write a Google Review</span></a>
+  </div>
+</div>
+
+<!-- ═══════════ BOOK A TABLE ═══════════ -->
+<section id="book">
+  <div class="sw" style="padding:0">
+    <div class="book-grid">
+      <div class="book-img-side">
+        <img src="img10.jpg" alt="Restaurant">
+        <div class="book-img-grad"></div>
+        <div class="book-img-txt">
+          <div class="book-img-title">Reserve Your<br><em>Table Tonight</em></div>
+          <div class="book-img-sub">Opposite Clifford's Tower · York</div>
+        </div>
+      </div>
+      <div class="book-form-side">
+        <p class="eyebrow">Reservations</p>
+        <h2 class="sec-title">Book Your <em>Table</em></h2>
+        <p class="sec-body" style="margin-bottom:.5rem;font-size:1rem">Let us take you on a journey through the flavours of India.</p>
+        <div style="margin:1.5rem 0">
+          <a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank" class="btn-g" style="width:100%;text-align:center;display:block;padding:1.1rem">✦ Book Online Now</a>
+        </div>
+        <div class="or-sep">or call us directly</div>
+        <div class="call-btns">
+          <a href="tel:+441904636481" class="call-btn-link">📞 +44 19046 36481</a>
+          <a href="tel:+447889482310" class="call-btn-link">📞 +44 7889 482310</a>
+        </div>
+        <div class="or-sep">or email us</div>
+        <div class="call-btns">
+          <a href="mailto:info@29state.co.uk" class="call-btn-link">✉ info@29state.co.uk</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="sw">
+    <p class="eyebrow rv">Find Us</p>
+    <h2 class="sec-title rv">Visit <em>29 States</em></h2>
+    <div class="contact-grid">
+      <div class="ccard rv">
+        <span class="ccard-icon">📍</span>
+        <div class="ccard-title">Address</div>
+        <p>Clifford's Tower, Opposite<br>12–13 Tower St<br>York YO1 9SA<br>United Kingdom</p>
+        <a href="https://maps.google.com/?q=12-13+Tower+St+York+YO1+9SA" target="_blank" style="color:var(--gold);margin-top:.9rem;font-size:.72rem;letter-spacing:.18em;font-family:'Cinzel',serif;text-transform:uppercase">Get Directions →</a>
+      </div>
+      <div class="ccard rv">
+        <span class="ccard-icon">📞</span>
+        <div class="ccard-title">Contact Us</div>
+        <a href="tel:+441904636481">+44 19046 36481</a>
+        <a href="tel:+447889482310">+44 7889 482310</a>
+        <a href="mailto:info@29state.co.uk">info@29state.co.uk</a>
+        <a href="https://www.facebook.com/www.29state.co.uk/" target="_blank" style="margin-top:.6rem">Facebook</a>
+        <a href="https://www.instagram.com/29states_indianrestaurant/" target="_blank">Instagram</a>
+      </div>
+      <div class="ccard rv">
+        <span class="ccard-icon">🕐</span>
+        <div class="ccard-title">Opening Hours</div>
+        <div class="hr-row"><span class="hr-day">Monday</span><span class="hr-time">5:30 – 10:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Tuesday</span><span class="hr-time">5:30 – 11:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Wednesday</span><span class="hr-time">5:30 – 11:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Thursday</span><span class="hr-time">5:30 – 11:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Friday</span><span class="hr-time">5:30 – 11:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time">5:30 – 11:00 pm</span></div>
+        <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">5:30 – 10:00 pm</span></div>
+        <div class="hr-note">Hours might differ on Fridays</div>
+      </div>
+    </div>
+    <div class="map-wrap rv">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2355.2!2d-1.0793!3d53.9591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487931a37e59ca91%3A0xfc9fb811745cd2c8!2s12-13%20Tower%20St%2C%20York%20YO1%209SA!5e0!3m2!1sen!2suk!4v1700000000000" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="logo.png" alt="29 States"></div>
+      <div class="footer-tag">Indian Restaurant & Catering<br>Celebrating the flavours of all 29 states of India.<br>Opposite Clifford's Tower, York YO1 9SA.</div>
+      <div class="socials">
+        <a href="https://www.facebook.com/www.29state.co.uk/" target="_blank" class="soc-btn" title="Facebook"><span>f</span></a>
+        <a href="https://www.instagram.com/29states_indianrestaurant/" target="_blank" class="soc-btn" title="Instagram"><span>ig</span></a>
+        <a href="https://g.page/r/CchS7lwRi5_8EBM/review" target="_blank" class="soc-btn" title="Google Review"><span>★</span></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#history">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#influencers">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.foodbooking.com/ordering/restaurant/menu/reservation?restaurant_uid=44dbb908-ca0b-4171-bf95-c4047455bc07&reservation=true" target="_blank">Book a Table</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Opening Hours</h4>
+      <p>Mon: 5:30 – 10:00 pm<br>Tue – Fri: 5:30 – 11:00 pm<br>Sat: 5:30 – 11:00 pm<br>Sun: 5:30 – 10:00 pm<br><br><em style="font-size:.75rem;color:var(--spice2)">Hours might differ on Fridays</em></p>
+    </div>
+    <div class="footer-col">
+      <h4>Find Us</h4>
+      <p>12–13 Tower St<br>York YO1 9SA<br>Opposite Clifford's Tower<br><br>📞 +44 19046 36481<br>📞 +44 7889 482310<br>✉ <a href="mailto:info@29state.co.uk" >info@29state.co.uk</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 29 States Indian Restaurant, York. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="https://www.facebook.com/www.29state.co.uk/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/29states_indianrestaurant/" target="_blank">Instagram</a>
+      <a href="https://g.page/r/CchS7lwRi5_8EBM/review" target="_blank">Google Review</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── CUSTOM CURSOR ── */
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function anim(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(anim)})();
+document.querySelectorAll('a,button,.dish-card,.gi,.reel-card,.t-card,.astat,.mi,.si,.di,.exp-card,.hcard,.am-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('grow');curR.classList.add('grow')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('grow');curR.classList.remove('grow')});
+});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
+
+/* ── MOBILE MENU ── */
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');document.getElementById('hbg').classList.toggle('open')}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('hbg').classList.remove('open')}
+
+/* ── TABS ── */
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.querySelectorAll('#tab-'+id+' .rv').forEach((el,i)=>{
+    el.classList.remove('on');
+    setTimeout(()=>el.classList.add('on'),i*55+60);
+  });
+}
+
+/* ── PARTICLES ── */
+const pBox=document.getElementById('ptcls');
+for(let i=0;i<22;i++){
+  const p=document.createElement('div');
+  p.className='ptcl';
+  const s=1+Math.random()*2.5;
+  p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s}px;animation-duration:${4+Math.random()*6}s;animation-delay:${Math.random()*6}s`;
+  pBox.appendChild(p);
+}
+
+/* ── SCROLL REVEAL ── */
+const allRv = document.querySelectorAll('.rv,.rv-l,.rv-r');
+
+function checkReveal(){
+  allRv.forEach(el=>{
+    if(!el.classList.contains('on')){
+      const r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight + 100){ el.classList.add('on'); }
+    }
+  });
+}
+
+// Run immediately so everything above fold shows
+checkReveal();
+
+// Run on scroll
+window.addEventListener('scroll', checkReveal, {passive:true});
+window.addEventListener('resize', checkReveal, {passive:true});
+
+// Safety net - show ALL elements after 1.5 seconds no matter what
+setTimeout(function(){ allRv.forEach(function(el){ el.classList.add('on'); }); }, 1500);
+
+/* ── IMAGE HOVER ── */
+document.querySelectorAll('.am-item').forEach(function(item){
+  var img = item.querySelector('img');
+  item.addEventListener('mouseenter',function(){ if(img) img.style.transform='scale(1.09)'; });
+  item.addEventListener('mouseleave',function(){ if(img) img.style.transform=''; });
+});
+</script>
+</body>
+</html>
