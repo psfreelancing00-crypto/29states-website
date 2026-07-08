@@ -477,27 +477,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .about-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:160px 160px}
 }
 
-/* ═══ DELIVERY BANNER ═══ */
-#delivery-banner{background:linear-gradient(135deg,#1a0a00,#2d1200,#1a0a00);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:1.5rem 3rem;position:relative;overflow:hidden}
-#delivery-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(201,168,76,.08) 0%,transparent 70%)}
-.db-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;z-index:1}
-.db-left{display:flex;align-items:center;gap:1.2rem}
-.db-icon{font-size:2.5rem;animation:dbBounce 1.5s ease-in-out infinite}
-@keyframes dbBounce{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-8deg)}}
-.db-highlight{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:.15em;line-height:1}
-.db-sub{font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--cream-dim);margin-top:.3rem}
-.db-center{text-align:center}
-.db-pill{display:inline-block;background:var(--spice);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);padding:.4rem 1.2rem;margin-bottom:.5rem}
-.db-note{font-size:.75rem;color:var(--cream-dim);letter-spacing:.1em;margin-bottom:.4rem}
-.db-call{font-size:.85rem;color:var(--cream);letter-spacing:.05em}
-.db-call strong{color:var(--gold)}
-.db-wa-btn{display:inline-flex;align-items:center;background:#25D366;color:#fff;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:.85rem 1.8rem;text-decoration:none;transition:var(--trans);white-space:nowrap;border:2px solid transparent}
-.db-wa-btn:hover{background:transparent;border-color:#25D366;color:#25D366;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.25)}
-@media(max-width:900px){
-  #delivery-banner{padding:1.5rem}
-  .db-inner{flex-direction:column;text-align:center}
-  .db-left{flex-direction:column;gap:.6rem}
-}
+
 
 </style>
 </head>
@@ -592,31 +572,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   </div>
 </div>
 
-
-<!-- ═══════════ DELIVERY BANNER ═══════════ -->
-<div id="delivery-banner">
-  <div class="db-inner">
-    <div class="db-left">
-      <div class="db-icon">🛵</div>
-      <div class="db-text">
-        <div class="db-highlight">FOOD DELIVERY</div>
-        <div class="db-sub">ON FRIDAYS &amp; SATURDAYS</div>
-      </div>
-    </div>
-    <div class="db-center">
-      <div class="db-pill">TAKEAWAY AVAILABLE</div>
-      <div class="db-note">Delivery charges will apply</div>
-      <div class="db-call">📞 Call or WhatsApp us on <strong>+44 7889 482310</strong></div>
-    </div>
-    <div class="db-right">
-      <a href="https://wa.me/447889482310?text=Hi%2C%20I%27d%20like%20to%20place%20a%20delivery%20order%20from%2029%20States" 
-         target="_blank" class="db-wa-btn">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="vertical-align:middle;margin-right:.5rem"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Order via WhatsApp
-      </a>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════ ABOUT ═══════════ -->
 <section id="about">
@@ -727,7 +682,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="dish-body">
           <div class="dish-name">Seared Scallops</div>
           <div class="dish-desc">Saffron & curry powder marinated, served with Makhani sauce, shallots & tamarind vinaigrette</div>
-          <div class="dish-foot"><span class="dish-price">£8.95</span><span class="dish-tag">🦪 Seafood</span></div>
+          <div class="dish-foot"><span class="dish-price">£9.50</span><span class="dish-tag">🦪 Seafood</span></div>
         </div>
       </div>
       <div class="dish-card rv">
@@ -739,7 +694,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="dish-body">
           <div class="dish-name">Punjabi Chicken Tikka</div>
           <div class="dish-desc">Overnight marinated chicken in hung yogurt & ginger garlic, finished in the clay tandoor</div>
-          <div class="dish-foot"><span class="dish-price">£5.95</span><span class="dish-tag">🍗 Tandoor</span></div>
+          <div class="dish-foot"><span class="dish-price">£6.25</span><span class="dish-tag">🍗 Tandoor</span></div>
         </div>
       </div>
     </div>
@@ -766,18 +721,18 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
           <div class="mcat-body">
             <div class="mi"><div class="mi-l"><div class="mi-n">Poppadum</div></div><div class="mi-p">£1.25</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Pickle Tray</div></div><div class="mi-p">£1.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Dal Shorba</div><div class="mi-d">Tomato and red lentil soup served with cumin bread</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Dal Shorba</div><div class="mi-d">Tomato and red lentil soup served with cumin bread</div></div><div class="mi-p">£6.25</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Tiranga Tikka</div><div class="mi-d">Paneer stuffed with mint & raisins, marinated with chef's special spices, finished in tandoor</div></div><div class="mi-p">£6.25</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Samosa</div><div class="mi-d">Shortcrust pastry pockets stuffed with potato and peas, deep fried</div></div><div class="mi-p">£5.25</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Mushroom Lajawab</div><div class="mi-d">Flat mushroom marinated with lemon and garlic topping with peppers and cheese</div></div><div class="mi-p">£5.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Onion Bhaji</div><div class="mi-d">Fritters made with sliced onion, potatoes, coriander mix with spices and gram flour</div></div><div class="mi-p">£4.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Jodhpuri Tandoori Aloo</div><div class="mi-d">Stuffed whole potato with spice mixture, marinated and cooked in tandoor</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Samosa</div><div class="mi-d">Shortcrust pastry pockets stuffed with potato and peas, deep fried</div></div><div class="mi-p">£5.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Mushroom Lajawab</div><div class="mi-d">Flat mushroom marinated with lemon and garlic topping with peppers and cheese</div></div><div class="mi-p">£6.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Onion Bhaji</div><div class="mi-d">Fritters made with sliced onion, potatoes, coriander mix with spices and gram flour</div></div><div class="mi-p">£5.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Jodhpuri Tandoori Aloo</div><div class="mi-d">Stuffed whole potato with spice mixture, marinated and cooked in tandoor</div></div><div class="mi-p">£6.25</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Buff Vada</div><div class="mi-d">Spiced potato & coconut dumpling mixed with raisins and spices, deep fried</div></div><div class="mi-p">£5.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Roll</div><div class="mi-d">Punjabi spring roll stuffed with vegetables and paneer</div></div><div class="mi-p">£5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Paneer Roll</div><div class="mi-d">Punjabi spring roll stuffed with vegetables and paneer</div></div><div class="mi-p">£6.25</div></div>
             <div class="sub-h">Chaat Chatori</div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Gol Gappa</div><div class="mi-d">Semolina balls, potato & spice filled, flavored spiced water</div></div><div class="mi-p">£5.95</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Dahi Papdi</div><div class="mi-d">Papdi topped with chopped onion, boiled potatoes, sweet curd and chutneys</div></div><div class="mi-p">£5.50</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Chaat</div></div><div class="mi-p">£4.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Chaat</div></div><div class="mi-p">£5.25</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Aloo Chana Chaat</div></div><div class="mi-p">£5.50</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Chicken Tikka Chaat</div></div><div class="mi-p">£6.95</div></div>
           </div>
@@ -785,19 +740,19 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="mcat rv">
           <div class="mcat-hdr"><span class="mcat-icon">🔥</span><div class="mcat-title">Starters – Non-Veg</div></div>
           <div class="mcat-body">
-            <div class="mi"><div class="mi-l"><div class="mi-n">Meat Samosa</div><div class="mi-d">Shortcrust dough pockets stuffed with lamb mince and chef special spices</div></div><div class="mi-p">£5.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Chicken Tikka</div><div class="mi-d">Chicken breast marinated in hung yogurt, ginger garlic paste and spices, cooked in tandoor</div></div><div class="mi-p">£5.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">King Prawns Goan Tandoori</div><div class="mi-d">Prawns marinated with spiced hung yogurt, cooked in tandoor with onion and peppers</div></div><div class="mi-p">£7.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Bengali Salmon Tikka</div><div class="mi-d">Marinated in Bengali spices and finished in tandoor</div></div><div class="mi-p">£7.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Fish Ambala Shahi</div><div class="mi-d">Sepangash fish marinated with gram flour, egg and chef special spices</div></div><div class="mi-p">£6.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Meat Samosa</div><div class="mi-d">Shortcrust dough pockets stuffed with lamb mince and chef special spices</div></div><div class="mi-p">£6.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Punjabi Chicken Tikka</div><div class="mi-d">Chicken breast marinated in hung yogurt, ginger garlic paste and spices, cooked in tandoor</div></div><div class="mi-p">£6.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">King Prawns Goan Tandoori</div><div class="mi-d">Prawns marinated with spiced hung yogurt, cooked in tandoor with onion and peppers</div></div><div class="mi-p">£8.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Bengali Salmon Tikka</div><div class="mi-d">Marinated in Bengali spices and finished in tandoor</div></div><div class="mi-p">£8.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Fish Ambala Shahi</div><div class="mi-d">Sepangash fish marinated with gram flour, egg and chef special spices</div></div><div class="mi-p">£6.95</div></div>
             <div class="mi"><div class="mi-l"><div class="mi-n">Seared Scallops ⭐</div><div class="mi-d">Marinated in saffron & curry powder, served with coulis, shallots & tamarind grapes</div></div><div class="mi-p">£8.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Rajasthani Seabass</div><div class="mi-d">Marinated with chef special spices and cooked in pan</div></div><div class="mi-p">£7.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Chapien Lucknowi</div><div class="mi-d">Lamb chops marinated in Lucknowi spices cooked over charcoal</div></div><div class="mi-p">£6.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Kakori Seek Kebab</div><div class="mi-d">Mince lamb with finely chopped onions, chillies, coriander, ginger and garlic, finished in tandoor</div></div><div class="mi-p">£5.95</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Mix Platter – Meat / Veggie</div></div><div class="mi-p">£6.95 / £5.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Rajasthani Seabass</div><div class="mi-d">Marinated with chef special spices and cooked in pan</div></div><div class="mi-p">£8.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Chapien Lucknowi</div><div class="mi-d">Lamb chops marinated in Lucknowi spices cooked over charcoal</div></div><div class="mi-p">£7.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Kakori Seek Kebab</div><div class="mi-d">Mince lamb with finely chopped onions, chillies, coriander, ginger and garlic, finished in tandoor</div></div><div class="mi-p">£6.25</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Mix Platter – Meat / Veggie</div></div><div class="mi-p">£7.50 / £6.50</div></div>
             <div class="sub-h">Sizzlers from Clay Oven</div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Non-Veg Sizzler</div><div class="mi-d">Chicken tikka, lambseek, meat samosa or salmon served with dips</div></div><div class="mi-p">£17.50</div></div>
-            <div class="mi"><div class="mi-l"><div class="mi-n">Vegetarian Sizzler</div><div class="mi-d">Paneer tikka, samosa, mushroom lajawab, onion bhaji, tandoori aloo with dips</div></div><div class="mi-p">£15.95</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Mixed Meat Sizzler</div><div class="mi-d">Selection of meat starters: chicken tikka, lambseek, chicken seek meat samosa or fish ambala served with dips</div></div><div class="mi-p">£18.50</div></div>
+            <div class="mi"><div class="mi-l"><div class="mi-n">Vegetarian Sizzler</div><div class="mi-d">Selection of vegetarian starters: paneer tikka, samosa, mushroom lajawab, onion bhaji, tandoori aloo served with dips</div></div><div class="mi-p">£16.95</div></div>
           </div>
         </div>
         <div class="mcat rv">
